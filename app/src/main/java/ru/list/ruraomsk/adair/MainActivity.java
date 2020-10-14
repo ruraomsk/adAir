@@ -3,6 +3,7 @@ package ru.list.ruraomsk.adair;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     final int REQUEST_CODE_DEVICES=1;
     final int REQUEST_CODE_SETTING=2;
     private TextView tvDeviceName;
+    private AboutDevice aboutDevice;
     Context ctx;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ctx=this;
         Common.run(this);
         tvDeviceName=findViewById(R.id.device_name);
+//        aboutDevice= (AboutDevice) getSupportFragmentManager().findFragmentById(R.id.about_device);
 
     }
 

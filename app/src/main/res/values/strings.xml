@@ -2,5 +2,60 @@
     <string name="app_name">adAir</string>
     <string name="main_host">192.168.1.1</string>
     <string name="main_port">8088</string>
-    <string name="choiceDevice">Выберите устройство</string>
+    <string name="choiceDevice">Запомнить выбранное устройство</string>
+    <string name="cmd_status">Статус</string>
+    <string name="cmd_traffic">Обмен</string>
+    <string name="cmd_tech">Технология</string>
+    <string name="cmd_hard">Оборудование</string>
+    <string name="cmd_bind">Привязка</string>
+
+    <string name="header_info">Информация</string>
+    <string name="header_status">Состояние</string>
+    <string name="header_time">Время</string>
+    <string name="header_GPRS">GPRS</string>
+    <string name="header_Lan">LAN</string>
+    <string name="header_setup_USDK">Настройка УСДК</string>
+    <string name="header_setup_LAN">Настройки LAN</string>
+
+    <string name="notDevice">Устройство не выбрано</string>
+    <string name="notIP">000.000.000.000</string>
+    <string name="notData">Нет данных</string>
+    <string name="device_number">Номер устройства</string>
+    <string name="device_version_hard">Версия платы</string>
+    <string name="device_version_soft">Версия ПО</string>
+    <string name="device_chanel">Активный канал</string>
+    <string name="device_status_pbs">Состояние ПБС</string>
+    <string name="device_status_gps">GPS</string>
+    <string name="device_status_pspd">ПСПД</string>
+    <string name="device_power">Питание</string>
+    <string name="device_memory">Память</string>
+    <string name="satelite_GPS">Спутники GPS</string>
+    <string name="sync_status">Синхронизация</string>
+    <string name="time_RTC">Время RTC</string>
+    <string name="time_GPS">Время GPS</string>
+    <string name="time_System">Системное время</string>
+    <string name="modem_type">Тип модема</string>
+    <string name="modem_soft_version">Версия ПО модема</string>
+    <string name="modem_sysop_GSM">Оператор GSM</string>
+    <string name="modem_level">Уровень сигнала</string>
+    <string name="modem_count">Попытка связи</string>
+    <string name="modem_ip_server">IP адресс сервера</string>
+    <string name="modem_stage">Стадия соединения</string>
+    <string name="modem_status">Состояние</string>
+    <string name="lan_ip_server">IP адресс сервера</string>
+    <string name="lan_stage">Стадия соединения</string>
+    <string name="lan_status">Состояние</string>
+    <string name="lan_ip">IP адресс</string>
+    <string name="lan_mask">Маска подсети</string>
+    <string name="lan_gate">Основной шлюз</string>
+    <string name="usdk_gprs">IP адресс GPRS</string>
+    <string name="usdk_port">Порт GPRS</string>
+    <string name="usdk_ip_lan">IP адресс LAN</string>
+    <string name="usdk_port_lan">Порт LAN</string>
+    <string name="usdk_chanel">Канал связи</string>
+    <string name="gprs">GPRS</string>
+    <string name="lan">LAN</string>
+    <string name="lan_DHCP">Получать адреса по DHCP</string>
+
+
 </resources>

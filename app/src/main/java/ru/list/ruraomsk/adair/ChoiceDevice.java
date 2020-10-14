@@ -1,6 +1,7 @@
 package ru.list.ruraomsk.adair;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.widget.ListViewAutoScrollHelper;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -40,7 +41,9 @@ public class ChoiceDevice extends AppCompatActivity implements View.OnClickListe
         listView=findViewById(R.id.ldevices);
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_single_choice,names);
         listView.setAdapter(adapter);
-
+        ListViewAutoScrollHelper scrollHelper=new ListViewAutoScrollHelper(listView);
+        scrollHelper.setEnabled(true);
+        listView.setOnTouchListener(scrollHelper);
     }
 
     @Override

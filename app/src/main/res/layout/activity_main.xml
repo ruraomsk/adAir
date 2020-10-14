@@ -1,20 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="10dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Не выбрано"
+        android:text="@string/notDevice"
         android:id="@+id/device_name">
-
     </TextView>
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/llMain"
-        android:orientation="vertical">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button style="@style/btn"
+            android:text="@string/cmd_status"
+            android:id="@+id/cmd_status">
+        </Button>
+        <Button style="@style/btn"
+            android:text="@string/cmd_traffic"
+            android:id="@+id/cmd_traffic">
+        </Button>
+        <Button style="@style/btn"
+            android:text="@string/cmd_tech"
+            android:id="@+id/cmd_tech">
+        </Button>
+        <Button style="@style/btn"
+            android:text="@string/cmd_hard"
+            android:id="@+id/cmd_hard">
+        </Button>
+        <Button style="@style/btn"
+            android:text="@string/cmd_bind"
+            android:id="@+id/cmd_bind">
+        </Button>
     </LinearLayout>
+    <fragment
+        android:name="ru.list.ruraomsk.adair.AboutDevice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/about_device_portrait"
+        tools:layout="@layout/fragment_about">
+    </fragment>
+    <fragment
+        android:name="ru.list.ruraomsk.adair.AboutGPRS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/about_gprs_portrait"
+        tools:layout="@layout/fragment_gprs">
+    </fragment>
+    <fragment
+        android:name="ru.list.ruraomsk.adair.AboutUSDK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/about_usdk_portrait"
+        tools:layout="@layout/edit_usdk">
+    </fragment>
+
 </LinearLayout>
+</ScrollView>
