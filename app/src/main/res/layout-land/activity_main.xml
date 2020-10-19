@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/not_device"
+        android:id="@+id/device_name"/>
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <Button style="@style/btn"
+            android:text="@string/cmd_traffic"
+            android:id="@+id/cmd_traffic"/>
+        <Button style="@style/btn"
+            android:text="@string/cmd_tech"
+            android:id="@+id/cmd_tech"/>
+        <Button style="@style/btn"
+            android:text="@string/cmd_hard"
+            android:id="@+id/cmd_hard"/>
+        <Button style="@style/btn"
+            android:text="@string/cmd_bind"
+            android:id="@+id/cmd_bind"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <fragment
+            android:name="ru.list.ruraomsk.adair.AboutDevice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/about_device_landscape"
+            tools:layout="@layout/fragment_about"/>
+        <fragment
+            android:name="ru.list.ruraomsk.adair.AboutGPRS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/about_gprs_landscape"
+            tools:layout="@layout/fragment_gprs"/>
+        <fragment
+            android:name="ru.list.ruraomsk.adair.AboutUSDK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/about_usdk_landscape"
+            tools:layout="@layout/edit_usdk"/>
+    </LinearLayout>
+</LinearLayout>
