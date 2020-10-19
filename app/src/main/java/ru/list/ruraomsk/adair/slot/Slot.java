@@ -68,8 +68,17 @@ public class Slot extends Thread {
         try {
             while(work){
                 if(toWrite.isEmpty()){
-                    sleep(100);
-                    continue;
+                    if (!bufferIn.ready()){
+                        sleep(100);
+                        continue;
+                    } else{
+                        String message=readMessage();
+                        if (message==null) {
+                            sleep(100);
+                            continue;
+                        }
+
+                    }
                 }
                 sendMessage(toWrite.poll());
                 String message=readMessage();
@@ -88,7 +97,7 @@ public class Slot extends Thread {
         toWrite.add(message);
     }
     public String getMessage(){
-        if(toRead.isEmpty()) return null;
+        if(toRead.isEmpty()) return "";
         return toRead.poll();
     }
     public boolean isMessage(){
