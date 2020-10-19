@@ -9,4 +9,15 @@
         <item>reply</item>
         <item>reply_all</item>
     </string-array>
+    <string-array name="traffic_type">
+        <item>Выкл</item>
+        <item>GPS</item>
+        <item>Модем</item>
+        <item>Сервер</item>
+        <item>Модем+Сервер</item>
+        <item>ПСПД</item>
+        <item>ИП</item>
+        <item>RS485</item>
+        <item>CAN</item>
+    </string-array>
 </resources>

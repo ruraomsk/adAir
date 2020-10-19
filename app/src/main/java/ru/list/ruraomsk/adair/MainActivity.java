@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,7 +29,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     final int REQUEST_CODE_DEVICES=1;
     final int REQUEST_CODE_SETTING=2;
     private TextView tvDeviceName;
-    private AboutDevice aboutDevice;
+
+    private Button btnTraffic;
+    private Button btnTech;
+    private Button btnHard;
+    private Button btnBind;
+
+
     Context ctx;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +44,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ctx=this;
         Common.run(this);
         tvDeviceName=findViewById(R.id.device_name);
-//        aboutDevice= (AboutDevice) getSupportFragmentManager().findFragmentById(R.id.about_device);
+        btnTraffic=findViewById(R.id.cmd_traffic);
+        btnTraffic.setOnClickListener(this);
+        btnTech=findViewById(R.id.cmd_tech);
+        btnTech.setOnClickListener(this);
+        btnHard=findViewById(R.id.cmd_hard);
+        btnHard.setOnClickListener(this);
+        btnBind=findViewById(R.id.cmd_bind);
+        btnBind.setOnClickListener(this);
 
     }
 
@@ -49,7 +63,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.cmd_traffic:
+                startActivity(new Intent(this,Traffic.class));
+                break;
+            case R.id.cmd_tech:
+                startActivity(new Intent(this,Tech.class));
+                break;
+            case R.id.cmd_hard:
+                startActivity(new Intent(this,Hard.class));
+                break;
+            case R.id.cmd_bind:
+                startActivity(new Intent(this,Bind.class));
+                break;
 
+        }
     }
 
     @Override

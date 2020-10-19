@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:padding="10dp"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
@@ -16,49 +14,49 @@
         <TableRow>
             <TextView android:text="@string/modem_type"/>
             <TextView
-                android:text="@string/notData"
+                android:text="@string/not_data"
                 android:id="@+id/modem_type"/>
         </TableRow>
         <TableRow>
             <TextView android:text="@string/modem_soft_version"/>
             <TextView
-                android:text="@string/notData"
+                android:text="@string/not_data"
                 android:id="@+id/modem_soft_version"/>
         </TableRow>
         <TableRow>
             <TextView android:text="@string/modem_sysop_GSM"/>
             <TextView
-                android:text="@string/notData"
+                android:text="@string/not_data"
                 android:id="@+id/modem_sysop_GSM"/>
         </TableRow>
         <TableRow>
             <TextView android:text="@string/modem_level"/>
             <TextView
-                android:text="@string/notData"
+                android:text="@string/not_data"
                 android:id="@+id/modem_level"/>
         </TableRow>
         <TableRow>
             <TextView android:text="@string/modem_count"/>
             <TextView
-                android:text="@string/notData"
+                android:text="@string/not_data"
                 android:id="@+id/modem_count"/>
         </TableRow>
         <TableRow>
             <TextView android:text="@string/modem_ip_server"/>
             <TextView
-                android:text="@string/notData"
+                android:text="@string/not_data"
                 android:id="@+id/modem_ip_server"/>
         </TableRow>
         <TableRow>
             <TextView android:text="@string/modem_stage"/>
             <TextView
-                android:text="@string/notData"
+                android:text="@string/not_data"
                 android:id="@+id/modem_stage"/>
         </TableRow>
         <TableRow>
             <TextView android:text="@string/modem_status"/>
             <TextView
-                android:text="@string/notData"
+                android:text="@string/not_data"
                 android:id="@+id/modem_status"/>
         </TableRow>
         <TableRow android:layout_width="match_parent">
@@ -69,37 +67,37 @@
         <TableRow>
             <TextView android:text="@string/lan_ip_server"/>
             <TextView
-                android:text="@string/notIP"
+                android:text="@string/not_ip"
                 android:id="@+id/lan_ip_server"/>
         </TableRow>
         <TableRow>
             <TextView android:text="@string/lan_stage"/>
             <TextView
-                android:text="@string/notData"
+                android:text="@string/not_data"
                 android:id="@+id/lan_stage"/>
         </TableRow>
         <TableRow>
             <TextView android:text="@string/lan_status"/>
             <TextView
-                android:text="@string/notData"
+                android:text="@string/not_data"
                 android:id="@+id/lan_status"/>
         </TableRow>
         <TableRow>
             <TextView android:text="@string/lan_ip"/>
             <TextView
-                android:text="@string/notIP"
+                android:text="@string/not_ip"
                 android:id="@+id/lan_ip"/>
         </TableRow>
         <TableRow>
             <TextView android:text="@string/lan_mask"/>
             <TextView
-                android:text="@string/notIP"
+                android:text="@string/not_ip"
                 android:id="@+id/lan_mask"/>
         </TableRow>
         <TableRow>
             <TextView android:text="@string/lan_gate"/>
             <TextView
-                android:text="@string/notIP"
+                android:text="@string/not_ip"
                 android:id="@+id/lan_gate"/>
         </TableRow>
 

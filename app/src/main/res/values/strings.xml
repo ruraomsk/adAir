@@ -1,14 +1,15 @@
 <resources>
-    <string name="app_name">adAir</string>
+    <string name="app_name">Диспетчер котроллера</string>
     <string name="main_host">192.168.1.1</string>
     <string name="main_port">8088</string>
-    <string name="choiceDevice">Запомнить выбранное устройство</string>
+    <string name="choiceDevice">Принять выбор</string>
+    <!--    Надписи на главных кнопках-->
     <string name="cmd_status">Статус</string>
     <string name="cmd_traffic">Обмен</string>
     <string name="cmd_tech">Технология</string>
     <string name="cmd_hard">Оборудование</string>
     <string name="cmd_bind">Привязка</string>
-
+    <!--    Заголовки для разделов-->
     <string name="header_info">Информация</string>
     <string name="header_status">Состояние</string>
     <string name="header_time">Время</string>
@@ -16,10 +17,12 @@
     <string name="header_Lan">LAN</string>
     <string name="header_setup_USDK">Настройка УСДК</string>
     <string name="header_setup_LAN">Настройки LAN</string>
-
-    <string name="notDevice">Устройство не выбрано</string>
-    <string name="notIP">000.000.000.000</string>
-    <string name="notData">Нет данных</string>
+    <!--    Начальные значения при загрузке пустого экрана-->
+    <string name="not_device">Устройство не выбрано</string>
+    <string name="not_ip">000.000.000.000</string>
+    <string name="not_data">Нет данных</string>
+    <string name="short_not_data">000</string>
+    <!--    Описание устройства-->
     <string name="device_number">Номер устройства</string>
     <string name="device_version_hard">Версия платы</string>
     <string name="device_version_soft">Версия ПО</string>
@@ -29,11 +32,13 @@
     <string name="device_status_pspd">ПСПД</string>
     <string name="device_power">Питание</string>
     <string name="device_memory">Память</string>
+    <!--    Время и GPS-->
     <string name="satelite_GPS">Спутники GPS</string>
     <string name="sync_status">Синхронизация</string>
     <string name="time_RTC">Время RTC</string>
     <string name="time_GPS">Время GPS</string>
     <string name="time_System">Системное время</string>
+    <!--    Все для модема-->
     <string name="modem_type">Тип модема</string>
     <string name="modem_soft_version">Версия ПО модема</string>
     <string name="modem_sysop_GSM">Оператор GSM</string>
@@ -42,12 +47,14 @@
     <string name="modem_ip_server">IP адресс сервера</string>
     <string name="modem_stage">Стадия соединения</string>
     <string name="modem_status">Состояние</string>
+    <!--    Все что касается LAN-->
     <string name="lan_ip_server">IP адресс сервера</string>
     <string name="lan_stage">Стадия соединения</string>
     <string name="lan_status">Состояние</string>
     <string name="lan_ip">IP адресс</string>
     <string name="lan_mask">Маска подсети</string>
     <string name="lan_gate">Основной шлюз</string>
+    <!--    Настройка УСДК-->
     <string name="usdk_gprs">IP адресс GPRS</string>
     <string name="usdk_port">Порт GPRS</string>
     <string name="usdk_ip_lan">IP адресс LAN</string>
@@ -56,6 +63,52 @@
     <string name="gprs">GPRS</string>
     <string name="lan">LAN</string>
     <string name="lan_DHCP">Получать адреса по DHCP</string>
+    <!-- Для экрана Обмен-->
+    <string name="record_stoped">Запись остановлена</string>
+    <string name="record_worked">Идет запись</string>
+    <string name="record_start">Запись</string>
+    <string name="record_stop">Остановить</string>
+    <string name="record_clear">Очистить</string>
+    <!--    Для экрана технология-->
+    <!--    Первая строка-->
+    <string name="tech_zero_time">00.00.00</string>
+    <string name="tech_rezim">Тех режим</string>
+    <string name="tech_PK">ПК</string>
+    <string name="tech_CK">СК</string>
+    <string name="tech_NK">НК</string>
+    <string name="tech_device">Устройство</string>
+    <string name="tech_Trezim">Режим</string>
+    <string name="tech_status">Состояние</string>
+    <string name="tech_switch">Перекл.</string>
+    <string name="tech_ftu">Фаза ТУ</string>
+    <string name="tech_fts">Фаза ТС</string>
+    <string name="blanck">" "</string>
+    <string name="tech_tcycle">Тцикла</string>
+    <string name="tech_tstart">Т начала</string>
+    <string name="tech_ttek">Т тек</string>
+    <string name="tech_tnext">Т след</string>
+    <string name="tech_tvp">ТВП</string>
+    <string name="tech_ring1">ВЫЗОВ1</string>
+    <string name="tech_ring2">ВЫЗОВ2</string>
+    <string name="tech_broken1">НЕИСПР1</string>
+    <string name="tech_broken2">НЕИСПР2</string>
+    <string name="tech_censors">Датчики</string>
+    <string name="tech_tvp1">ТВП1</string>
+    <string name="tech_tvp2">ТВП2</string>
+    <string name="tech_elblink">ЖМ</string>
+    <string name="tech_os">ОС</string>
+    <string name="tech_stress">НАГРУЗ</string>
+    <string name="tech_input">ВВОД</string>
+    <string name="tech_power">ПИТАНИЕ</string>
+    <string name="tech_door">ДВЕРЬ</string>
+    <string name="tech_inputs">Входы</string>
+    <string name="tech_countts">СчетТС</string>
+    <string name="tech_statistic">Статист</string>
+    <string name="tech_base">Баз. привязка</string>
+    <string name="tech_send_statistic">Передать статистику</string>
+    <string name="hard_broken">Неиспр</string>
+    <string name="setting_save">Сохранить</string>
+    <string name="setting_server">Сервер обновлений</string>
 
 
 </resources>

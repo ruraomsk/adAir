@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:padding="10dp"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
@@ -16,31 +15,33 @@
         <TableRow>
             <TextView android:text="@string/usdk_gprs"/>
             <EditText
-                android:text="@string/notIP"
-                android:id="@+id/usdk_gprs"/>
+                android:text="@string/not_ip"
+                android:id="@+id/usdk_gprs"
+                android:importantForAutofill="no"
+                android:inputType="number" />
         </TableRow>
         <TableRow>
             <TextView android:text="@string/usdk_port"/>
             <EditText
-                android:text="@string/notIP"
+                android:text="@string/not_ip"
                 android:id="@+id/usdk_port"/>
         </TableRow>
         <TableRow>
             <TextView android:text="@string/usdk_ip_lan"/>
             <EditText
-                android:text="@string/notIP"
+                android:text="@string/not_ip"
                 android:id="@+id/usdk_ip_lan"/>
         </TableRow>
         <TableRow>
             <TextView android:text="@string/usdk_port_lan"/>
             <EditText
-                android:text="@string/notIP"
+                android:text="@string/not_ip"
                 android:id="@+id/usdk_port_lan"/>
         </TableRow>
         <TableRow>
             <TextView android:text="@string/usdk_chanel"/>
             <TextView
-                android:text="@string/notData"
+                android:text="@string/not_data"
                 android:id="@+id/usdk_chanel"/>
         </TableRow>
         <TableRow android:layout_width="match_parent">
@@ -51,19 +52,19 @@
         <TableRow>
             <TextView android:text="@string/lan_ip"/>
             <EditText
-                android:text="@string/notIP"
+                android:text="@string/not_ip"
                 android:id="@+id/edit_lan_ip"/>
         </TableRow>
         <TableRow>
             <TextView android:text="@string/lan_mask"/>
             <EditText
-                android:text="@string/notIP"
+                android:text="@string/not_ip"
                 android:id="@+id/edit_lan_mask"/>
         </TableRow>
         <TableRow>
             <TextView android:text="@string/lan_gate"/>
             <EditText
-                android:text="@string/notIP"
+                android:text="@string/not_ip"
                 android:id="@+id/edit_lan_gate"/>
         </TableRow>
         <TableRow android:layout_width="match_parent">

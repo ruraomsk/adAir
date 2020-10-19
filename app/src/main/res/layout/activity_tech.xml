@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <fragment
+                android:name="ru.list.ruraomsk.adair.ViewTech"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/about_tech"
+                tools:layout="@layout/fragment_tech">
+            </fragment>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:collapseColumns="*"
+                    android:id="@+id/tech_table">
+                    <TableRow>
+                        <TextView
+                            style="@style/vt_table_bold"
+                            android:text="Тнач"/>
+                        <TextView
+                            style="@style/vt_table_bold"
+                            android:text="Фаза ТУ"/>
+                        <TextView
+                            style="@style/vt_table_bold"
+                            android:text="Сдв.пр"/>
+                        <TextView
+                            style="@style/vt_table_bold"
+                            android:text="Т пр"/>
+                        <TextView
+                            style="@style/vt_table_bold"
+                            android:text="Фаза ТС"/>
+                        <TextView
+                            style="@style/vt_table_bold"
+                            android:text="Т осн"/>
+                        <TextView
+                            style="@style/vt_table_bold"
+                            android:text="Т ес"/>
+                        <TextView
+                            style="@style/vt_table_bold"
+                            android:text="Т ту"/>
+                        <TextView
+                            style="@style/vt_table_bold"
+                            android:text="Сост"/>
+                    </TableRow>
+                </TableLayout>
+            </ScrollView>
+        </LinearLayout>
+    </HorizontalScrollView>
+</ScrollView>
