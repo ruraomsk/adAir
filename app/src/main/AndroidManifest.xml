@@ -11,6 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar">
+        <service
+            android:name=".Device"
+            android:enabled="true"
+            android:exported="true"/>
+
         <activity
             android:name=".Bind"
             android:label="@string/cmd_bind"

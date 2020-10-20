@@ -22,7 +22,11 @@ public class UpdateDb {
 
     private String readMessage() throws IOException, InterruptedException {
         if(!socket.isConnected()) return null;
-        while (!bufferIn.ready()) Thread.sleep(100);
+        int count=0;
+        while (!bufferIn.ready()) {
+            Thread.sleep(100);
+            if (++count >20) return null;
+        }
         return bufferIn.readLine();
     }
 
@@ -31,6 +35,7 @@ public class UpdateDb {
             socket=new Socket();
             socket.connect(new InetSocketAddress(InetAddress.getByName(host),port),1000);
             socket.setKeepAlive(true);
+            socket.setSoTimeout(1000);
             bufferIn=new BufferedReader((new InputStreamReader(socket.getInputStream())));
             bufferOut=new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()),64*1024));
             db.clearAll();

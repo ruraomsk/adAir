@@ -52,6 +52,9 @@ public class DB {
     public String getPassword(String host){
         return mapDef.get(host).password;
     }
+    public int getPort(String host){
+        return mapDef.get(host).port;
+    }
     public void clearAll(){
         mapDef =new HashMap<String, DevDef>();
         db.execSQL("drop table if exists "+DbTable+" ;");

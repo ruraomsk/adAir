@@ -2,6 +2,8 @@ package ru.list.ruraomsk.adair.slot;
 
 import android.util.Log;
 
+import ru.list.ruraomsk.adair.Device;
+
 public class ReadData  extends Thread{
     Slot slot;
     Device device;
@@ -16,6 +18,7 @@ public class ReadData  extends Thread{
                 sleep(100);
             }
             //Пришло сообшение от устройства
+
         } catch (InterruptedException e) {
             Log.d("adAir",e.getMessage());
         }

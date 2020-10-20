@@ -3,27 +3,20 @@ package ru.list.ruraomsk.adair;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.lang.reflect.Array;
-import java.util.List;
-import java.util.Set;
-
-import ru.list.ruraomsk.adair.DB.DB;
-import ru.list.ruraomsk.adair.DB.UpdateDb;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     final int REQUEST_CODE_DEVICES=1;
@@ -41,8 +34,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ctx=this;
         Common.run(this);
+        Common.intent=new Intent(this, Device.class);
+        ComponentName name=startService(new Intent(this, Device.class));
+        if(name!=null) Log.d("adAirDebug", name.getPackageName()+""+name.getClassName() );
+
+        Common.sconn=new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName name, IBinder service) {
+                Log.d("adAirDebug", "onServerConnected" );
+                Common.device=((Device.DeviceBinder) service).getService();
+                Common.bound=true;
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName name) {
+                Common.bound=false;
+            }
+        };
+        if(!bindService(Common.intent,Common.sconn,0)){
+            Log.d("adAirDebug", "not binding" );
+
+        };
+
         tvDeviceName=findViewById(R.id.device_name);
         btnTraffic=findViewById(R.id.cmd_traffic);
         btnTraffic.setOnClickListener(this);
@@ -96,6 +110,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //выбираем устройство
                 startActivityForResult(new Intent(this,Setting.class),REQUEST_CODE_SETTING);
                 break;
+            case R.id.menu_open:
+                //Подключаем устройство
+                if(!Common.bound){
+                    Toast.makeText(this, "Сервис не запущен", Toast.LENGTH_LONG).show();
+                    break;
+                }
+                Common.device.setDevice(Common.host,Common.db.getPort(Common.host),Common.db.getLogin(Common.host),Common.db.getPassword(Common.host));
+                Common.device.connect();
+                if(Common.device.isWork())  Toast.makeText(this, "Устанавлено соединение", Toast.LENGTH_LONG).show();
+                else Toast.makeText(this, "Соединение не установлено", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.menu_close:
+                //Отключаем устройство
+                if(!Common.bound){
+                    Toast.makeText(this, "Сервис не запущен", Toast.LENGTH_LONG).show();
+                    break;
+                }
+                Common.device.disconnect();
+                Toast.makeText(this, "Отключаем соединение", Toast.LENGTH_LONG).show();
+                break;
 
         }
         return super.onOptionsItemSelected(item);
@@ -122,5 +156,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+//        Log.d("adAirDebug", "OnStop" );
+//        if(!Common.bound) return;
+//        Common.stopDevice();
+//        unbindService(Common.sconn);
     }
 }

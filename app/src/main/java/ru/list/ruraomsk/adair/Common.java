@@ -1,6 +1,8 @@
 package ru.list.ruraomsk.adair;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.util.Log;
 
@@ -16,7 +18,13 @@ public class Common {
     static public UpdateDb updateDb;
     static public Set<String> hosts;
     static public String host;
-    public static void run(Context ctx){
+    static public ServiceConnection sconn;
+    public static boolean bound=false;
+    public static Intent intent;
+    public static Device device;
+    private static Context ctx;
+    static public void run(Context c){
+        ctx=c;
         SharedPreferences sPref=ctx.getSharedPreferences("adAir",Context.MODE_PRIVATE);
 
         HostMain=sPref.getString("hostMain",ctx.getString(R.string.main_host));
@@ -44,5 +52,8 @@ public class Common {
             }
         }
         hosts=db.getHosts();
+    }
+    static public void stopDevice(){
+        ctx.stopService(intent);
     }
 }

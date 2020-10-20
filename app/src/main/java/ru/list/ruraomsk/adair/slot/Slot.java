@@ -11,9 +11,11 @@ import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class Slot extends Thread {
+public class Slot extends Thread implements Runnable{
     private String address;
     private int port;
     private Socket socket=null;
@@ -22,9 +24,7 @@ public class Slot extends Thread {
     private BufferedReader bufferIn=null;
     private ConcurrentLinkedQueue<String> toWrite;
     private ConcurrentLinkedQueue<String> toRead;
-    private String readMessage() throws IOException, InterruptedException {
-        if(!work) return null;
-        while (!bufferIn.ready()) sleep(100);
+    private String readMessage() throws IOException {
         return bufferIn.readLine();
     }
     private void sendMessage(String message){
@@ -33,6 +33,7 @@ public class Slot extends Thread {
         bufferOut.flush();
     }
     private void close(){
+        work=false;
         if(socket!=null){
             try {
                 socket.close();
@@ -43,51 +44,64 @@ public class Slot extends Thread {
                     bufferIn.close();
                 }
             } catch (IOException e) {
-                Log.d("adAir",e.getMessage());
+                Log.d("adAirDebug",e.getMessage());
             }
         }
 
     }
     public Slot(String address,int port){
-        try {
+        toRead=new ConcurrentLinkedQueue<>();
+        toWrite=new ConcurrentLinkedQueue<>();
         this.address=address;
         this.port=port;
-        socket=new Socket();
-        socket.connect(new InetSocketAddress(InetAddress.getByName(address),port),1000);
-            socket.setKeepAlive(true);
-        bufferIn=new BufferedReader((new InputStreamReader(socket.getInputStream())));
-        bufferOut=new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()),64*1024));
-        work=true;
-        } catch (IOException e) {
-            close();
-            Log.d("adAir",e.getMessage());
-        }
     }
     @Override
     public void run(){
         try {
+            socket=new Socket();
+            socket.connect(new InetSocketAddress(InetAddress.getByName(address),port),5000);
+            socket.setKeepAlive(true);
+            socket.setSoTimeout(1000);
+            bufferIn=new BufferedReader((new InputStreamReader(socket.getInputStream())));
+            bufferOut=new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()),64*1024));
+            work=true;
+            Thread reader =new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        while(work){
+                            if(!bufferIn.ready()){
+                                sleep(100);
+                                continue;
+                            }
+                            String message=bufferIn.readLine();
+                            toRead.add(message);
+                        }
+                    } catch (IOException | InterruptedException e) {
+                        work=false;
+                        Log.d("adAirDebug",e.getMessage());
+                    }
+                    Log.d("adAirDebug","close slot reader");
+                    close();
+                }
+            });
+            reader.start();
             while(work){
                 if(toWrite.isEmpty()){
-                    if (!bufferIn.ready()){
-                        sleep(100);
-                        continue;
-                    } else{
-                        String message=readMessage();
-                        if (message==null) {
-                            sleep(100);
-                            continue;
-                        }
-
-                    }
+                    sleep(100);
+                    continue;
                 }
-                sendMessage(toWrite.poll());
-                String message=readMessage();
-                if (message==null) break;
-                toRead.add(message);
+                String mess=toWrite.poll();
+                sendMessage(mess);
+                Log.d("adAirDebug",mess);
             }
-        } catch (IOException | InterruptedException e) {
-            Log.d("adAir",e.getMessage());
+        } catch (InterruptedException | SocketException | UnknownHostException e) {
+            Log.d("adAirDebug",e.getMessage());
+        } catch (IOException e) {
+            Log.d("adAirDebug",e.getMessage());
         }
+        Log.d("adAirDebug","close slot");
+
         close();
     }
     public boolean isWork (){
