@@ -26,6 +26,7 @@ public class Device extends Service {
         this.port=port;
         this.login=login;
         this.password=password;
+
     }
 
     @Override
@@ -37,37 +38,31 @@ public class Device extends Service {
 
     public void connect(){
         if(slot!=null) return;
-        Thread sec=new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    slot=new Slot(host,port);
-                    slot.start();
-                    if(!slot.isWork()) return;
-                    slot.writeMessage("login="+login+" password="+password);
-                    while (slot.isWork()&&!slot.isMessage()){
-                        sleep(100);
-                    }
-                    if (slot.getMessage().contains("OK")&&slot.isWork()) {
-                        Log.d("adAirDebug","Прошел верификацию");
-                        work=true;
-                    } else return;
-                    while (slot.isWork()){
-                        slot.writeMessage("message");
-                        while (slot.isWork()&&!slot.isMessage()){
-                            sleep(100);
-                        }
-                        Log.d("adAirDebug",slot.getMessage());
-                        sleep(2000);
-                    }
-                } catch (InterruptedException e) {
-                    Log.d("adAirDebug",e.getMessage());
-                }
+        try {
+            slot=new Slot(host,port);
+            slot.start();
+            sleep(1000);
+            if(!slot.isWork()) {
+                Log.d("adAirDebug","Slot не запустился");
+                return;
             }
-        });
-        sec.start();
-    }
-    public void run(){
+            slot.writeMessage("login="+login+" password="+password);
+            while (slot.isWork()&&!slot.isMessage()){
+                sleep(100);
+            }
+            String message=slot.getMessage();
+            if (message==null) return;
+            Log.d("adAirDebug","Получил:"+message+":");
+            if (message.contains("OK")&&slot.isWork()) {
+                Log.d("adAirDebug","Прошел верификацию");
+                work=true;
+            } else {
+                Log.d("adAirDebug","Верификацию не прошел");
+                return;
+            }
+        } catch (InterruptedException e) {
+            Log.d("adAirDebug",e.getMessage());
+        }
         second=new ReadData(slot,this);
         second.start();
     }
@@ -76,7 +71,11 @@ public class Device extends Service {
         try {
             sleep(1000);
             second.interrupt();
+            while(slot.isWork()){
+                sleep(500);
+            }
             work=false;
+            slot=null;
         } catch (InterruptedException e) {
             Log.d("adAir",e.getMessage());
         }

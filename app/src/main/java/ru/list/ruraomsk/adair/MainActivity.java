@@ -8,6 +8,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
@@ -116,10 +117,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Toast.makeText(this, "Сервис не запущен", Toast.LENGTH_LONG).show();
                     break;
                 }
+                if(Common.host==null){
+                    Toast.makeText(this, "Выберите устройство", Toast.LENGTH_LONG).show();
+                    break;
+                }
                 Common.device.setDevice(Common.host,Common.db.getPort(Common.host),Common.db.getLogin(Common.host),Common.db.getPassword(Common.host));
                 Common.device.connect();
-                if(Common.device.isWork())  Toast.makeText(this, "Устанавлено соединение", Toast.LENGTH_LONG).show();
-                else Toast.makeText(this, "Соединение не установлено", Toast.LENGTH_LONG).show();
+                if(Common.device.isWork())  {
+                    Toast.makeText(this, "Устанавлено соединение", Toast.LENGTH_LONG).show();
+                    tvDeviceName.setTextColor(Color.GREEN);
+                }
+                else {
+                    Toast.makeText(this, "Соединение не установлено", Toast.LENGTH_LONG).show();
+                    tvDeviceName.setTextColor(Color.RED);
+                }
                 break;
             case R.id.menu_close:
                 //Отключаем устройство
@@ -129,6 +140,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 Common.device.disconnect();
                 Toast.makeText(this, "Отключаем соединение", Toast.LENGTH_LONG).show();
+                if(Common.device.isWork())  {
+                    tvDeviceName.setTextColor(Color.GREEN);
+                }
+                else {
+                    tvDeviceName.setTextColor(Color.RED);
+                }
                 break;
 
         }

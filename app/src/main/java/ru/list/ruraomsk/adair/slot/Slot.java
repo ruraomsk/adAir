@@ -69,16 +69,18 @@ public class Slot extends Thread implements Runnable{
                 @Override
                 public void run() {
                     try {
+
                         while(work){
                             if(!bufferIn.ready()){
                                 sleep(100);
                                 continue;
                             }
                             String message=bufferIn.readLine();
+                            Log.d("adAirDebug","Read:"+message+":");
+
                             toRead.add(message);
                         }
                     } catch (IOException | InterruptedException e) {
-                        work=false;
                         Log.d("adAirDebug",e.getMessage());
                     }
                     Log.d("adAirDebug","close slot reader");
@@ -92,8 +94,13 @@ public class Slot extends Thread implements Runnable{
                     continue;
                 }
                 String mess=toWrite.poll();
+
                 sendMessage(mess);
                 Log.d("adAirDebug",mess);
+                if(mess.startsWith("exit")) {
+                    sleep(1000);
+                    break;
+                }
             }
         } catch (InterruptedException | SocketException | UnknownHostException e) {
             Log.d("adAirDebug",e.getMessage());
@@ -111,10 +118,9 @@ public class Slot extends Thread implements Runnable{
         toWrite.add(message);
     }
     public String getMessage(){
-        if(toRead.isEmpty()) return "";
         return toRead.poll();
     }
     public boolean isMessage(){
-        return toRead.isEmpty();
+        return !toRead.isEmpty();
     }
 }

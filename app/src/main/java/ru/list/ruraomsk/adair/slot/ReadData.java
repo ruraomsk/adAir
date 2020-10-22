@@ -14,14 +14,20 @@ public class ReadData  extends Thread{
     @Override
     public void run() {
         try {
-            while (slot.isWork()&&!slot.isMessage()){
-                sleep(100);
+            while(slot.isWork()){
+                while (!slot.isMessage()){
+                    if (!slot.isWork()) return;
+                    sleep(100);
+                }
+                //Пришло сообшение от устройства
+                Log.d("adAirDebug","ReadData:"+slot.getMessage()+":");
+                sleep(1000);
+                slot.writeMessage("ole ole ole");
             }
-            //Пришло сообшение от устройства
-
         } catch (InterruptedException e) {
-            Log.d("adAir",e.getMessage());
+            Log.d("adAirDebug",e.getMessage());
         }
+        Log.d("adAirDebug","Stop ReadData");
 
     }
 }
