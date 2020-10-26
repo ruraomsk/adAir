@@ -5,8 +5,11 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.util.Log;
-
+import android.widget.TextView;
+import android.os.Handler;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 import ru.list.ruraomsk.adair.DB.DB;
 import ru.list.ruraomsk.adair.DB.UpdateDb;
@@ -20,11 +23,16 @@ public class Common {
     static public String host;
     static public ServiceConnection sconn;
     public static boolean bound=false;
+    public static ConcurrentMap<String,String> values;
     public static Intent intent;
     public static Device device;
+    public static ConcurrentMap<String,ViewController> fragments;
     private static Context ctx;
+
     static public void run(Context c){
         ctx=c;
+        values=new ConcurrentHashMap<>();
+        fragments=new ConcurrentHashMap<>();
         SharedPreferences sPref=ctx.getSharedPreferences("adAir",Context.MODE_PRIVATE);
 
         HostMain=sPref.getString("hostMain",ctx.getString(R.string.main_host));
@@ -56,4 +64,27 @@ public class Common {
     static public void stopDevice(){
         ctx.stopService(intent);
     }
+    static public void RegitrationFragment(String name,ViewController ctx){
+        Log.d("adAirDebug", "Добавили "+name );
+        fragments.put(name,ctx);
+    }
+    static public void UnRegitrationFragment(String name){
+        Log.d("adAirDebug", "Убрали "+name );
+        fragments.remove(name,ctx);
+    }
+    static public void OneStepUI(){
+
+        for (ViewController ctrl:fragments.values()) {
+
+            ctrl.View();
+        }
+    }
+    static public void ViewData(TextView tv,String code){
+        if (values.containsKey(code)) {
+            tv.setText(values.get(code));
+        } else {
+            Log.d("adAirDebug", "Нет "+code );
+        }
+    }
+
 }

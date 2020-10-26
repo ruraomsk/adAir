@@ -76,7 +76,7 @@ public class Slot extends Thread implements Runnable{
                                 continue;
                             }
                             String message=bufferIn.readLine();
-                            Log.d("adAirDebug","Read:"+message+":");
+//                            Log.d("adAirDebug","Read:"+message+":");
 
                             toRead.add(message);
                         }
@@ -96,7 +96,7 @@ public class Slot extends Thread implements Runnable{
                 String mess=toWrite.poll();
 
                 sendMessage(mess);
-                Log.d("adAirDebug",mess);
+//                Log.d("adAirDebug",mess);
                 if(mess.startsWith("exit")) {
                     sleep(1000);
                     break;

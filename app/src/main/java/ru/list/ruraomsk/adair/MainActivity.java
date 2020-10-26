@@ -19,6 +19,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.sql.Date;
+import java.sql.Time;
+import java.text.SimpleDateFormat;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     final int REQUEST_CODE_DEVICES=1;
     final int REQUEST_CODE_SETTING=2;
@@ -28,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btnTech;
     private Button btnHard;
     private Button btnBind;
-
+    private Thread second;
 
     Context ctx;
     @Override
@@ -126,6 +130,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if(Common.device.isWork())  {
                     Toast.makeText(this, "Устанавлено соединение", Toast.LENGTH_LONG).show();
                     tvDeviceName.setTextColor(Color.GREEN);
+                    second=new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                while (true){
+                                    Thread.sleep(1000);
+                                    Date date=new Date(System.currentTimeMillis());
+                                    SimpleDateFormat formatter= new SimpleDateFormat("HH:mm:ss");
+                                    Common.values.put("#SYSTEM.TIME",formatter.format(date));
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Common.OneStepUI();
+                                        }
+                                    });
+                                }
+                            } catch (InterruptedException e) {
+//                                Log.d("adAirDebug", e.getMessage());
+                            }
+
+                        }
+                    });
+                    second.start();
                 }
                 else {
                     Toast.makeText(this, "Соединение не установлено", Toast.LENGTH_LONG).show();
@@ -134,10 +161,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.menu_close:
                 //Отключаем устройство
+                if (Common.device==null) break;
                 if(!Common.bound){
                     Toast.makeText(this, "Сервис не запущен", Toast.LENGTH_LONG).show();
                     break;
                 }
+                second.interrupt();
                 Common.device.disconnect();
                 Toast.makeText(this, "Отключаем соединение", Toast.LENGTH_LONG).show();
                 if(Common.device.isWork())  {
@@ -175,13 +204,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
 
     @Override
     protected void onStop() {
         super.onStop();
-//        Log.d("adAirDebug", "OnStop" );
-//        if(!Common.bound) return;
-//        Common.stopDevice();
-//        unbindService(Common.sconn);
     }
 }

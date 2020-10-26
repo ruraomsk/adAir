@@ -20,7 +20,7 @@ public class Device extends Service {
     private boolean work=false;
     private DeviceBinder binder=new DeviceBinder();
     private ReadData second=null;
-
+    private Thread thread=null;
     public void setDevice(String host,int port,String login,String password){
         this.host=host;
         this.port=port;
@@ -65,17 +65,35 @@ public class Device extends Service {
         }
         second=new ReadData(slot,this);
         second.start();
+        thread=new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    sleep(1000);
+                    //TODO
+                } catch (InterruptedException e) {
+                    Log.d("adAirDebug",e.getMessage());
+                }
+
+            }
+        });
+        thread.start();
+        slot.writeMessage("#DBG.MODE:000");
     }
     public void disconnect(){
+        if(slot==null) return;
         slot.writeMessage("exit");
         try {
             sleep(1000);
             second.interrupt();
+            thread.interrupt();
             while(slot.isWork()){
                 sleep(500);
             }
             work=false;
             slot=null;
+            thread=null;
+            second=null;
         } catch (InterruptedException e) {
             Log.d("adAir",e.getMessage());
         }
