@@ -25,6 +25,7 @@ public class ReadData  extends Thread{
                 //Разбираем его на имя и текст
                 if (!message.startsWith("#") || !message.contains(":") ||!message.contains(".") ){
                     Log.d("adAirDebug","Не данные !"+message);
+                    Common.values.put("#SYS.LOG",Common.values.get("#SYS.LOG")+"\n"+message);
                     continue;
                 }
                 String[] list=message.split(":");

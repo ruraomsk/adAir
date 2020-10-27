@@ -78,7 +78,7 @@ public class Device extends Service {
             }
         });
         thread.start();
-        slot.writeMessage("#DBG.MODE:000");
+        slot.writeMessage("#DBG.MODE:1");
     }
     public void disconnect(){
         if(slot==null) return;

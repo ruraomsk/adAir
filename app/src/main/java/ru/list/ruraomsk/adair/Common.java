@@ -37,6 +37,7 @@ public class Common {
     static public void run(Context c){
         ctx=c;
         values=new ConcurrentHashMap<>();
+        values.put("#SYS.LOG","");
         fragments=new ConcurrentHashMap<>();
         sPref=ctx.getSharedPreferences("adAir",Context.MODE_PRIVATE);
 
@@ -46,7 +47,7 @@ public class Common {
         DefaultPortGPRS=sPref.getString("defaultPortGPRS","1096");
         DefaultIpLAN=sPref.getString("defaultIpLAN","192.168.115.013");
         DefaultPortLAN=sPref.getString("defaultPortLAN","1096");
-        Log.d("adAirDebug", "<"+ DefaultIpGPRS+">");
+//        Log.d("adAirDebug", "<"+ DefaultIpGPRS+">");
 
         db=new DB(ctx);
         db.open();
