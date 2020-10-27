@@ -11,6 +11,9 @@
             <TextView
                 android:textStyle="bold"
                 android:text="@string/header_setup_USDK"/>
+            <Button
+                android:text="Данные"
+                android:id="@+id/edit_data"/>
         </TableRow>
         <TableRow>
             <TextView android:text="@string/usdk_gprs"/>
@@ -18,13 +21,14 @@
                 android:text="@string/not_ip"
                 android:id="@+id/usdk_gprs"
                 android:importantForAutofill="no"
-                android:inputType="number" />
+                />
         </TableRow>
         <TableRow>
             <TextView android:text="@string/usdk_port"/>
             <EditText
-                android:text="@string/not_ip"
-                android:id="@+id/usdk_port"/>
+                android:text="@string/short_not_data"
+                android:id="@+id/usdk_port"
+                />
         </TableRow>
         <TableRow>
             <TextView android:text="@string/usdk_ip_lan"/>
@@ -35,7 +39,7 @@
         <TableRow>
             <TextView android:text="@string/usdk_port_lan"/>
             <EditText
-                android:text="@string/not_ip"
+                android:text="@string/short_not_data"
                 android:id="@+id/usdk_port_lan"/>
         </TableRow>
         <TableRow>
@@ -73,7 +77,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/lan_DHCP" />
+            <Button
+                android:text="@string/edid_send"
+                android:id="@+id/edit_send"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
 
+                />
         </TableRow>
     </TableLayout>
 </ScrollView>

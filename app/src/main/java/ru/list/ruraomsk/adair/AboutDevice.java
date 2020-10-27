@@ -71,7 +71,7 @@ public class AboutDevice extends ViewController  {
         Common.ViewData(device_version_soft,"#BRD.SWVER");
         Common.ViewData(device_chanel,"#SYS.CHAN");
         Common.ViewData(device_status_pbs,"#SYS.MCODE");
-        Common.ViewData(device_status_pbs,"#GPS.ERROR");
+        Common.ViewData(device_status_gps,"#GPS.ERROR");
         Common.ViewData(device_status_pspd,"#485.ERROR");
         Common.ViewData(device_power,"#PWR.STATE");
         Common.ViewData(device_memory,"#MEM.ERROR");

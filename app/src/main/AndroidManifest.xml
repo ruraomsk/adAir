@@ -17,29 +17,36 @@
             android:exported="true"/>
 
         <activity
+            android:screenOrientation="landscape"
             android:name=".Bind"
             android:label="@string/cmd_bind"
             android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity
+            android:screenOrientation="landscape"
             android:name=".Hard"
             android:label="@string/cmd_hard"
             android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity
+            android:screenOrientation="landscape"
             android:name=".Tech"
             android:label="@string/cmd_tech"
             android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity
+            android:screenOrientation="landscape"
             android:name=".Traffic"
             android:label="@string/cmd_traffic"
             android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity
+            android:screenOrientation="landscape"
             android:name=".ChoiceDevice"
             android:label="@string/choiceDevice"
             android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity
+            android:screenOrientation="landscape"
             android:name=".Setting"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

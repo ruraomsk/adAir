@@ -174,6 +174,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 else {
                     tvDeviceName.setTextColor(Color.RED);
+                    Common.values.clear();
                 }
                 break;
 
@@ -183,7 +184,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        Log.d("adAirDebug", "requestCode = " + requestCode + ", resultCode = " + resultCode);
+//        Log.d("adAirDebug", "requestCode = " + requestCode + ", resultCode = " + resultCode);
 
         if(resultCode==RESULT_OK){
             switch (requestCode){

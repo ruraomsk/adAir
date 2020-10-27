@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.os.Handler;
 import java.util.Set;
@@ -28,16 +29,24 @@ public class Common {
     public static Device device;
     public static ConcurrentMap<String,ViewController> fragments;
     private static Context ctx;
-
+    public static String DefaultIpGPRS;
+    public static String DefaultPortGPRS;
+    public static String DefaultIpLAN;
+    public static String DefaultPortLAN;
+    static SharedPreferences sPref;
     static public void run(Context c){
         ctx=c;
         values=new ConcurrentHashMap<>();
         fragments=new ConcurrentHashMap<>();
-        SharedPreferences sPref=ctx.getSharedPreferences("adAir",Context.MODE_PRIVATE);
+        sPref=ctx.getSharedPreferences("adAir",Context.MODE_PRIVATE);
 
         HostMain=sPref.getString("hostMain",ctx.getString(R.string.main_host));
-
         PortMain=sPref.getInt("portMain",Integer.parseInt(ctx.getString(R.string.main_port)));
+        DefaultIpGPRS=sPref.getString("defaultIpGPRS","092.255.180.080");
+        DefaultPortGPRS=sPref.getString("defaultPortGPRS","1096");
+        DefaultIpLAN=sPref.getString("defaultIpLAN","192.168.115.013");
+        DefaultPortLAN=sPref.getString("defaultPortLAN","1096");
+        Log.d("adAirDebug", "<"+ DefaultIpGPRS+">");
 
         db=new DB(ctx);
         db.open();
@@ -70,7 +79,7 @@ public class Common {
     }
     static public void UnRegitrationFragment(String name){
         Log.d("adAirDebug", "Убрали "+name );
-        fragments.remove(name,ctx);
+        fragments.remove(name);
     }
     static public void OneStepUI(){
 
@@ -86,5 +95,24 @@ public class Common {
             Log.d("adAirDebug", "Нет "+code );
         }
     }
+    static public void SetData(EditText etv, String code){
+        if (values.containsKey(code)) {
+            etv.setText(values.get(code));
+        } else {
+            Log.d("adAirDebug", "Нет "+code );
+        }
+    }
+    static public void SavePref(){
+        SharedPreferences.Editor editor=sPref.edit();
 
+        editor.putString("defaultIpGPRS",DefaultIpGPRS);
+        editor.putString("defaultPortGPRS",DefaultPortGPRS);
+        editor.putString("defaultPortLAN",DefaultPortLAN);
+        editor.putString("defaultIpLAN",DefaultIpLAN);
+        editor.putString("defaultIpLAN",DefaultIpLAN);
+        editor.putString("hostMain",HostMain);
+        editor.putInt("portMain",PortMain);
+
+        editor.commit();
+    }
 }

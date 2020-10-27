@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Диспетчер контроллера</string>
-    <string name="main_host">192.168.115.190</string>
+    <string name="main_host">192.168.115.159</string>
     <string name="main_port">8088</string>
     <string name="choiceDevice">Принять выбор</string>
     <!--    Надписи на главных кнопках-->
@@ -44,20 +44,20 @@
     <string name="modem_sysop_GSM">Оператор GSM</string>
     <string name="modem_level">Уровень сигнала</string>
     <string name="modem_count">Попытка связи</string>
-    <string name="modem_ip_server">IP адресс сервера</string>
+    <string name="modem_ip_server">IP адрес сервера</string>
     <string name="modem_stage">Стадия соединения</string>
     <string name="modem_status">Состояние</string>
     <!--    Все что касается LAN-->
-    <string name="lan_ip_server">IP адресс сервера</string>
+    <string name="lan_ip_server">IP адрес сервера</string>
     <string name="lan_stage">Стадия соединения</string>
     <string name="lan_status">Состояние</string>
-    <string name="lan_ip">IP адресс</string>
+    <string name="lan_ip">IP адрес</string>
     <string name="lan_mask">Маска подсети</string>
     <string name="lan_gate">Основной шлюз</string>
     <!--    Настройка УСДК-->
-    <string name="usdk_gprs">IP адресс GPRS</string>
+    <string name="usdk_gprs">IP адрес GPRS</string>
     <string name="usdk_port">Порт GPRS</string>
-    <string name="usdk_ip_lan">IP адресс LAN</string>
+    <string name="usdk_ip_lan">IP адрес LAN</string>
     <string name="usdk_port_lan">Порт LAN</string>
     <string name="usdk_chanel">Канал связи</string>
     <string name="gprs">GPRS</string>
@@ -109,6 +109,7 @@
     <string name="hard_broken">Неиспр</string>
     <string name="setting_save">Сохранить</string>
     <string name="setting_server">Сервер обновлений</string>
+    <string name="edid_send">Отправить</string>
 
 
 </resources>

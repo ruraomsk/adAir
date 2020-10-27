@@ -16,7 +16,7 @@ public class Device extends Service {
     private String password;
     private String host;
     private int port;
-    private Slot slot=null;
+    public Slot slot=null;
     private boolean work=false;
     private DeviceBinder binder=new DeviceBinder();
     private ReadData second=null;
