@@ -14,48 +14,56 @@
         <TableRow>
             <TextView android:text="@string/modem_type"/>
             <TextView
+                android:gravity="right"
                 android:text="@string/not_data"
                 android:id="@+id/modem_type"/>
         </TableRow>
         <TableRow>
             <TextView android:text="@string/modem_soft_version"/>
             <TextView
+                android:gravity="right"
                 android:text="@string/not_data"
                 android:id="@+id/modem_soft_version"/>
         </TableRow>
         <TableRow>
             <TextView android:text="@string/modem_sysop_GSM"/>
             <TextView
+                android:gravity="right"
                 android:text="@string/not_data"
                 android:id="@+id/modem_sysop_GSM"/>
         </TableRow>
         <TableRow>
             <TextView android:text="@string/modem_level"/>
             <TextView
+                android:gravity="right"
                 android:text="@string/not_data"
                 android:id="@+id/modem_level"/>
         </TableRow>
         <TableRow>
             <TextView android:text="@string/modem_count"/>
             <TextView
+                android:gravity="right"
                 android:text="@string/not_data"
                 android:id="@+id/modem_count"/>
         </TableRow>
         <TableRow>
             <TextView android:text="@string/modem_ip_server"/>
             <TextView
+                android:gravity="right"
                 android:text="@string/not_data"
                 android:id="@+id/modem_ip_server"/>
         </TableRow>
         <TableRow>
             <TextView android:text="@string/modem_stage"/>
             <TextView
+                android:gravity="right"
                 android:text="@string/not_data"
                 android:id="@+id/modem_stage"/>
         </TableRow>
         <TableRow>
             <TextView android:text="@string/modem_status"/>
             <TextView
+                android:gravity="right"
                 android:text="@string/not_data"
                 android:id="@+id/modem_status"/>
         </TableRow>
@@ -73,12 +81,14 @@
         <TableRow>
             <TextView android:text="@string/lan_stage"/>
             <TextView
+                android:gravity="right"
                 android:text="@string/not_data"
                 android:id="@+id/lan_stage"/>
         </TableRow>
         <TableRow>
             <TextView android:text="@string/lan_status"/>
             <TextView
+                android:gravity="right"
                 android:text="@string/not_data"
                 android:id="@+id/lan_status"/>
         </TableRow>

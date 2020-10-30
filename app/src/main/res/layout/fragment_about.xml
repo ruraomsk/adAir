@@ -14,12 +14,14 @@
         <TableRow>
             <TextView android:text="@string/device_number"/>
             <TextView
+                android:gravity="right"
                 android:text="@string/not_data"
                 android:id="@+id/device_number"/>
         </TableRow>
         <TableRow>
             <TextView android:text="@string/device_version_hard"/>
             <TextView
+                android:gravity="right"
                 android:text="@string/not_data"
                 android:id="@+id/device_version_hard"/>
         </TableRow>
@@ -27,6 +29,7 @@
             <TextView android:text="@string/device_version_soft"/>
             <TextView
                 android:text="@string/not_data"
+                android:gravity="right"
                 android:id="@+id/device_version_soft"/>
         </TableRow>
         <TableRow android:layout_width="match_parent">
@@ -38,23 +41,27 @@
             <TextView android:text="@string/device_chanel"/>
             <TextView
                 android:text="@string/not_data"
+                android:gravity="right"
                 android:id="@+id/device_chanel"/>
         </TableRow>
         <TableRow>
             <TextView android:text="@string/device_status_pbs"/>
             <TextView
                 android:text="@string/not_data"
+                android:gravity="right"
                 android:id="@+id/device_status_pbs"/>
         </TableRow>
         <TableRow>
             <TextView android:text="@string/device_status_gps"/>
             <TextView
                 android:text="@string/not_data"
+                android:gravity="right"
                 android:id="@+id/device_status_gps"/>
         </TableRow>
         <TableRow>
             <TextView android:text="@string/device_status_pspd"/>
             <TextView
+                android:gravity="right"
                 android:text="@string/not_data"
                 android:id="@+id/device_status_pspd"/>
         </TableRow>
@@ -62,12 +69,14 @@
             <TextView android:text="@string/device_power"/>
             <TextView
                 android:text="@string/not_data"
+                android:gravity="right"
                 android:id="@+id/device_power"/>
         </TableRow>
         <TableRow>
             <TextView android:text="@string/device_memory"/>
             <TextView
                 android:text="@string/not_data"
+                android:gravity="right"
                 android:id="@+id/device_memory"/>
         </TableRow>
         <TableRow android:layout_width="match_parent">
@@ -79,24 +88,28 @@
             <TextView android:text="@string/satelite_GPS"/>
             <TextView
                 android:text="@string/not_data"
+                android:gravity="right"
                 android:id="@+id/satelite_GPS"/>
         </TableRow>
         <TableRow>
             <TextView android:text="@string/time_RTC"/>
             <TextView
                 android:text="@string/not_data"
+                android:gravity="right"
                 android:id="@+id/time_RTC"/>
         </TableRow>
         <TableRow>
             <TextView android:text="@string/time_GPS"/>
             <TextView
                 android:text="@string/not_data"
+                android:gravity="right"
                 android:id="@+id/time_GPS"/>
         </TableRow>
         <TableRow>
             <TextView android:text="@string/time_System"/>
             <TextView
                 android:text="@string/not_data"
+                android:gravity="right"
                 android:id="@+id/time_System"/>
         </TableRow>
     </TableLayout>

@@ -41,7 +41,7 @@ public class Device extends Service {
         try {
             slot=new Slot(host,port);
             slot.start();
-            sleep(1000);
+            sleep(3000);
             if(!slot.isWork()) {
                 Log.d("adAirDebug","Slot не запустился");
                 return;

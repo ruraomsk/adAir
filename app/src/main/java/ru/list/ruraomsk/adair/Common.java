@@ -28,7 +28,7 @@ public class Common {
     public static Intent intent;
     public static Device device;
     public static ConcurrentMap<String,ViewController> fragments;
-    private static Context ctx;
+    public static Context ctx;
     public static String DefaultIpGPRS;
     public static String DefaultPortGPRS;
     public static String DefaultIpLAN;
@@ -115,5 +115,13 @@ public class Common {
         editor.putInt("portMain",PortMain);
 
         editor.commit();
+    }
+
+    public static String[] GetLines(String key) {
+        if(!values.containsKey(key)){
+            Log.d("adAirDebug", "Нет "+key );
+            return new String[36];
+        }
+        return values.get(key).split(",");
     }
 }

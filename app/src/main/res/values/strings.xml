@@ -23,7 +23,7 @@
     <string name="not_data">Нет данных</string>
     <string name="short_not_data">000</string>
     <!--    Описание устройства-->
-    <string name="device_number">Номер устройства</string>
+    <string name="device_number">Номер </string>
     <string name="device_version_hard">Версия платы</string>
     <string name="device_version_soft">Версия ПО</string>
     <string name="device_chanel">Активный канал</string>

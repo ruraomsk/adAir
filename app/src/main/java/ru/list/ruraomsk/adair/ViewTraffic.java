@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -26,6 +27,9 @@ public class ViewTraffic extends  ViewController implements View.OnClickListener
         btn_cmd_record=v.findViewById(R.id.btn_cmd_record);
         btn_cmd_clear=v.findViewById(R.id.btn_cmd_clear);
         traffic_text=v.findViewById(R.id.traffic_text);
+        btn_cmd_clear.setOnClickListener(this);
+        btn_cmd_record.setOnClickListener(this);
+
         traffic_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -92,10 +96,13 @@ public class ViewTraffic extends  ViewController implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_cmd_record:
+                Toast.makeText(Common.ctx, "Обмен записан", Toast.LENGTH_LONG).show();
 
                 break;
             case R.id.btn_cmd_clear:
                 Common.values.put("#SYS.LOG","");
+//                Common.ViewData(traffic_text,"#SYS.LOG");
+                break;
         }
     }
 }
