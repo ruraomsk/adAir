@@ -1,5 +1,6 @@
 package ru.list.ruraomsk.adair;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,6 +39,20 @@ public class ViewTech extends ViewController {
     TextView tech_ttek;
     TextView tech_tnext;
 
+    TextView tech_ring1;
+    TextView tech_ring2;
+    TextView tech_broken1;
+    TextView tech_broken2;
+
+    TextView tech_tvp1;
+    TextView tech_tvp2;
+    TextView tech_elblink;
+    TextView tech_os;
+    TextView tech_stress;
+    TextView tech_input;
+    TextView tech_power;
+    TextView tech_door;
+
 
 
 
@@ -71,6 +86,20 @@ public class ViewTech extends ViewController {
         tech_tstart=v.findViewById(R.id.tech_tstart);
         tech_ttek=v.findViewById(R.id.tech_ttek);
         tech_tnext=v.findViewById(R.id.tech_tnext);
+
+        tech_ring1=v.findViewById(R.id.tech_ring1);
+        tech_ring2=v.findViewById(R.id.tech_ring2);
+        tech_broken1=v.findViewById(R.id.tech_broken1);
+        tech_broken2=v.findViewById(R.id.tech_broken2);
+
+        tech_tvp1=v.findViewById(R.id.tech_tvp1);
+        tech_tvp2=v.findViewById(R.id.tech_tvp2);
+        tech_elblink=v.findViewById(R.id.tech_elblink);
+        tech_os=v.findViewById(R.id.tech_os);
+        tech_stress=v.findViewById(R.id.tech_stress);
+        tech_input=v.findViewById(R.id.tech_input);
+        tech_power=v.findViewById(R.id.tech_power);
+        tech_door=v.findViewById(R.id.tech_door);
 
         return v;
     }
@@ -121,6 +150,94 @@ public class ViewTech extends ViewController {
         tech_tstart.setText(r3[4]);
         tech_ttek.setText(r3[5]);
         tech_tnext.setText(r3[6]);
+
+        int r4=Integer.parseInt(Common.values.get("#TCH.TVPST"),16);
+        int tvp1=r4&0x3;
+        int tvp2=(r4&0xc)>>2;
+        switch (tvp1){
+            case 0:
+                tech_ring1.setText("ГОТОВ1");
+                break;
+            case 1:
+                tech_ring1.setText("ВЫЗОВ1");
+                break;
+            case 2:
+                tech_ring1.setText("ЖДИТЕ1");
+                break;
+       }
+        switch (tvp2){
+            case 0:
+                tech_ring2.setText("ГОТОВ2");
+                break;
+            case 1:
+                tech_ring2.setText("ВЫЗОВ2");
+                break;
+            case 2:
+                tech_ring2.setText("ЖДИТЕ2");
+                break;
+        }
+        if ((r4&0x10)!=0){
+            tech_ring1.setBackgroundColor(Color.YELLOW);
+        } else {
+            tech_ring1.setBackgroundColor(Color.WHITE);
+        }
+        if ((r4&0x20)!=0){
+            tech_ring2.setBackgroundColor(Color.YELLOW);
+        } else {
+            tech_ring2.setBackgroundColor(Color.WHITE);
+        }
+        if ((r4&0x40)!=0){
+            tech_broken1.setText("НЕИСПР1");
+        } else {
+            tech_broken1.setText("ИСПРАВЕН");
+        }
+        if ((r4&0x80)!=0){
+            tech_broken2.setText("НЕИСПР2");
+        } else {
+            tech_broken2.setText("ИСПРАВЕН");
+        }
+
+        int r5=Integer.parseInt(Common.values.get("#TCH.PANEL"),16);
+        if((r5&1)!=0){
+            tech_elblink.setBackgroundColor(Color.GREEN);
+        } else {
+            tech_elblink.setBackgroundColor(Color.WHITE);
+        }
+        if((r5&2)!=0){
+            tech_os.setBackgroundColor(Color.GREEN);
+        } else {
+            tech_os.setBackgroundColor(Color.WHITE);
+        }
+        if((r5&4)!=0){
+            tech_stress.setBackgroundColor(Color.GREEN);
+        } else {
+            tech_stress.setBackgroundColor(Color.WHITE);
+        }
+        if((r5&8)!=0){
+            tech_input.setBackgroundColor(Color.GREEN);
+        } else {
+            tech_input.setBackgroundColor(Color.WHITE);
+        }
+        if((r5&16)!=0){
+            tech_power.setBackgroundColor(Color.GREEN);
+        } else {
+            tech_power.setBackgroundColor(Color.WHITE);
+        }
+        if((r5&32)!=0){
+            tech_door.setBackgroundColor(Color.GREEN);
+        } else {
+            tech_door.setBackgroundColor(Color.WHITE);
+        }
+        if((r5&64)!=0){
+            tech_tvp1.setBackgroundColor(Color.GREEN);
+        } else {
+            tech_tvp1.setBackgroundColor(Color.WHITE);
+        }
+        if((r5&128)!=0){
+            tech_tvp2.setBackgroundColor(Color.GREEN);
+        } else {
+            tech_tvp2.setBackgroundColor(Color.WHITE);
+        }
     }
 
 }
